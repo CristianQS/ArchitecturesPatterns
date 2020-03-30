@@ -5,12 +5,18 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwimTraining-API", "SwimTraining-API\SwimTraining-API.csproj", "{F86D99E2-7AB0-4DCD-8AD1-6E7C37E1EC44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Domain", "Domain\SwimTraining.Domain.csproj", "{5F5B7317-D20C-428A-901E-218E2B2294CB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0ED4C6A2-CF85-4420-AF6E-F645FBCE676E}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Domain", "SwimTraining.Domain\SwimTraining.Domain.csproj", "{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Application.PrimaryAdapters", "SwimTraining.Application.PrimaryAdapters\SwimTraining.Application.PrimaryAdapters.csproj", "{8EF8FCBD-BA81-414B-9C1A-FEC535FB5E65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Application.SecondaryPorts", "SwimTraining.Application.SecondaryPorts\SwimTraining.Application.SecondaryPorts.csproj", "{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Infraestructure.SecondaryAdapters", "SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj", "{64352720-8A25-40BB-AC1C-F038928E3383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +28,22 @@ Global
 		{F86D99E2-7AB0-4DCD-8AD1-6E7C37E1EC44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F86D99E2-7AB0-4DCD-8AD1-6E7C37E1EC44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F86D99E2-7AB0-4DCD-8AD1-6E7C37E1EC44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F5B7317-D20C-428A-901E-218E2B2294CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F5B7317-D20C-428A-901E-218E2B2294CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F5B7317-D20C-428A-901E-218E2B2294CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F5B7317-D20C-428A-901E-218E2B2294CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EF8FCBD-BA81-414B-9C1A-FEC535FB5E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF8FCBD-BA81-414B-9C1A-FEC535FB5E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF8FCBD-BA81-414B-9C1A-FEC535FB5E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF8FCBD-BA81-414B-9C1A-FEC535FB5E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64352720-8A25-40BB-AC1C-F038928E3383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64352720-8A25-40BB-AC1C-F038928E3383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64352720-8A25-40BB-AC1C-F038928E3383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64352720-8A25-40BB-AC1C-F038928E3383}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
