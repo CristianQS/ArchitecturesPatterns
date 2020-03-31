@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SwimTraining.Application.PrimaryAdapters;
 
 namespace SwimTraining_API.Controllers {
     [Route("training")]
@@ -7,7 +8,8 @@ namespace SwimTraining_API.Controllers {
         // GET
         [HttpGet]
         public ActionResult GetTrainingByUser(string userId) {
-            return View();
+            var trainingList = new TrainingServices().GetTrainingBy(userId);
+            return trainingList;
         }
     }
 }

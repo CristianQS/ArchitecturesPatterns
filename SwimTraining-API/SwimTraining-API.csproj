@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SwimTraining.Application.PrimaryAdapters\SwimTraining.Application.PrimaryAdapters.csproj" />
+    <ProjectReference Include="..\SwimTraining.Domain\SwimTraining.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
