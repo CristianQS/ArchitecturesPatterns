@@ -42,6 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrainingRepositoryPort.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwimTraining.Domain\SwimTraining.Domain.csproj">
+      <Project>{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}</Project>
+      <Name>SwimTraining.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
