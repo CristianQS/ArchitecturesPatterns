@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using NSubstitute;
 using NUnit.Framework;
 using SwimTraining.Application.SecondaryPorts;
@@ -20,7 +21,7 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
         }
 
         [Test]
-        public void get_training_by_id() {
+        public async Task get_training_by_id() {
             var AName = "ATraining";
             var ADescription = "ADescription";
             var ADateTime = new DateTime(2020,1,1);
@@ -29,9 +30,9 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
             var ATraining = new Training(AName,ADescription,ADateTime,exercises,createdBy);
             TrainingServices.GetTrainingBy(createdBy).Returns(new List<Training>{ ATraining });
 
-            var result = TrainingServices.GetTrainingBy(createdBy);
+            var result = await TrainingServices.GetTrainingBy(createdBy);
 
-            result.Should().Contain(ATraining);
+            result.Should().Contain(new List<Training> { ATraining } );
         }
     }
 }

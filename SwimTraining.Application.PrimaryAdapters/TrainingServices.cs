@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
 
@@ -10,8 +11,8 @@ namespace SwimTraining.Application.PrimaryAdapters {
             TrainingRepository = trainingRepository;
         }
 
-        public List<Training> GetTrainingBy(string userId) {
-            var trainings = TrainingRepository.GetTrainingByUser();
+        public async Task<List<Training>> GetTrainingBy(string userId) {
+            var trainings = await TrainingRepository.GetTrainingByUser(userId);
             return trainings;
         }
     }

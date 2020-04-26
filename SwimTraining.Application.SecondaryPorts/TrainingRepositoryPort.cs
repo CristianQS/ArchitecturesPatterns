@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SwimTraining.Domain;
 
 namespace SwimTraining.Application.SecondaryPorts {
     public interface TrainingRepositoryPort {
-        List<Training> GetTrainingByUser();
+        Task<List<Training>> GetTrainingByUser(string userId);
     }
 }
