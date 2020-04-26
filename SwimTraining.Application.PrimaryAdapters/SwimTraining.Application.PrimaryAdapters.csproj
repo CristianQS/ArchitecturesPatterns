@@ -45,6 +45,10 @@
     <Compile Include="TrainingServices.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SwimTraining.Application.SecondaryPorts\SwimTraining.Application.SecondaryPorts.csproj">
+      <Project>{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}</Project>
+      <Name>SwimTraining.Application.SecondaryPorts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SwimTraining.Domain\SwimTraining.Domain.csproj">
       <Project>{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}</Project>
       <Name>SwimTraining.Domain</Name>

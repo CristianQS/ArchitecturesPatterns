@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SwimTraining.Application.PrimaryAdapters;
 using SwimTraining.Domain;
+using SwimTraining.Infraestructure.SecondaryAdapters;
 
 namespace SwimTraining_API.Controllers {
     [Route("api/training")]
@@ -10,7 +11,7 @@ namespace SwimTraining_API.Controllers {
         // GET
         [HttpGet]
         public List<Training> GetTrainingByUser(string userId) {
-            var trainingList = new TrainingServices().GetTrainingBy(userId);
+            var trainingList = new TrainingServices(new TrainingRepositoryPostgreSQLAdapter()).GetTrainingBy(userId);
             return trainingList;
         }
     }
