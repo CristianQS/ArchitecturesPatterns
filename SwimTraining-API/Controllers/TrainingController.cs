@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwimTraining.Application.PrimaryAdapters;
@@ -16,5 +16,12 @@ namespace SwimTraining_API.Controllers {
             var trainingList = new GetTrainingByUserId(new TrainingRepositoryPostgreSQLAdapter()).Execute(userId);
             return trainingList;
         }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateTraining([FromBody] TrainingDto training) {
+            await new CreateTraining(new TrainingRepositoryPostgreSQLAdapter()).Execute(training);
+            return NoContent();
+        }
+
     }
 }
