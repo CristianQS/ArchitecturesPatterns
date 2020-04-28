@@ -8,12 +8,12 @@ using SwimTraining.Domain;
 using Npgsql;
 
 namespace SwimTraining.Infraestructure.SecondaryAdapters {
-    public class TrainingRepositoryPostgreSQLAdapter : TrainingRepositoryPort {
+    public class TrainingRepositoryPostgresSqlAdapter : TrainingRepositoryPort {
         public Training Training1 = new Training("Training 1", "ADescription", new DateTime(2020, 1, 1), null, "1234");
         public Training Training2 = new Training("Training 2", "AnotherDescription", new DateTime(2020, 2, 2), null, "1234");
         public List<Training> Trainings = new List<Training>();
 
-        public TrainingRepositoryPostgreSQLAdapter() {
+        public TrainingRepositoryPostgresSqlAdapter() {
         }
 
         public async Task<List<Training>> GetTrainingByUser(string userId) {
