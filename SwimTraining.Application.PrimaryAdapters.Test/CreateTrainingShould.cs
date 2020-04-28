@@ -14,7 +14,7 @@ namespace SwimTraining.Application.PrimaryAdapters.Test {
 
         [SetUp]
         public void Setup() {
-            TrainingRepositoryPort = Substitute.For<TrainingRepositoryPostgreSQLAdapter>(); 
+            TrainingRepositoryPort = Substitute.For<TrainingRepositoryPostgresSqlAdapter>(); 
             CreateTraining = new CreateTraining(TrainingRepositoryPort);
             Substitute.For<CreateTraining>();
         }
