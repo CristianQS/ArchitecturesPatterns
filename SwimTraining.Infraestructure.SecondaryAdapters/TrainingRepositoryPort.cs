@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
@@ -60,6 +58,16 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
             command.Prepare();
             await command.ExecuteNonQueryAsync();
             return null;
+        }
+
+        public async Task DeleteTraining(int trainingId) {
+            var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
+            await connection.OpenAsync();
+
+            var command = new NpgsqlCommand("Delete from training where id=@trainingId", connection);
+            command.Parameters.AddWithValue("trainingId", trainingId);
+            command.Prepare();
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwimTraining.Application.PrimaryAdapters;
 using SwimTraining.Application.PrimaryAdapters.Request;
+using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
 using SwimTraining.Infraestructure.SecondaryAdapters;
 
@@ -29,5 +30,22 @@ namespace SwimTraining_API.Controllers {
             return Content("");
         }
 
+        [HttpDelete("{trainingId}")]
+        public async Task<ActionResult> DeleteTraining(int trainingId) {
+            await new DeleteTraining(new TrainingRepositoryPostgresSqlAdapter()).Execute(trainingId);
+            return Ok();
+        }
+    }
+
+    public class DeleteTraining {
+        public TrainingRepositoryPort TrainingRepositoryPort;
+
+        public DeleteTraining(TrainingRepositoryPort trainingRepositoryPort) {
+            TrainingRepositoryPort = trainingRepositoryPort;
+        }
+
+        public async Task Execute(int trainingId) {
+            await TrainingRepositoryPort.DeleteTraining(trainingId);
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace SwimTraining.Application.SecondaryPorts {
         Task<List<Training>> GetTrainingByUser(string userId);
         Task CreateTraining(Training training);
         Task<Training> UpdateTraining(Training training, int trainingId);
+        Task DeleteTraining(int trainingId);
     }
 }

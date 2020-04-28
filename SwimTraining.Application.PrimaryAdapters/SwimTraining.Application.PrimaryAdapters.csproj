@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateTraining.cs" />
+    <Compile Include="DeleteTraining.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GetTrainingByUserId.cs" />
     <Compile Include="Request\TrainingDto.cs" />
