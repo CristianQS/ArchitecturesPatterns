@@ -46,5 +46,20 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
             command.Prepare();
             await command.ExecuteNonQueryAsync();
         }
+
+        public async Task<Training> UpdateTraining(Training training, int trainingId) {
+            var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
+            await connection.OpenAsync();
+
+            var command = new NpgsqlCommand("Update training Set name=@name, description=@description, datetime=@datetime, createdBy=@createdBy where id=@trainingId", connection);
+            command.Parameters.AddWithValue("name", training.Name);
+            command.Parameters.AddWithValue("description", training.Description);
+            command.Parameters.AddWithValue("datetime", training.Date);
+            command.Parameters.AddWithValue("createdBy", training.CreatedBy);
+            command.Parameters.AddWithValue("trainingId", trainingId);
+            command.Prepare();
+            await command.ExecuteNonQueryAsync();
+            return null;
+        }
     }
 }
