@@ -9,15 +9,15 @@ using FluentAssertions;
 
 namespace SwimTraining.Application.PrimaryAdapters.Test
 {
-    public class TrainingServicesShould
+    public class GetTrainingByUserIdShould
     {
-        private TrainingServices TrainingServices;
+        private GetTrainingByUserId GetTrainingByUserId;
         private TrainingRepositoryPort TrainingRepositoryPort;
 
         [SetUp]
         public void Setup() {
             TrainingRepositoryPort = Substitute.For<TrainingRepositoryPort>();
-            TrainingServices = new TrainingServices(TrainingRepositoryPort);
+            GetTrainingByUserId = new GetTrainingByUserId(TrainingRepositoryPort);
         }
 
         [Test]
@@ -28,9 +28,9 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
             var exercises = new List<Exercise>();
             var createdBy = "AnId";
             var ATraining = new Training(AName,ADescription,ADateTime,exercises,createdBy);
-            TrainingServices.GetTrainingBy(createdBy).Returns(new List<Training>{ ATraining });
+            GetTrainingByUserId.Execute(createdBy).Returns(new List<Training>{ ATraining });
 
-            var result = await TrainingServices.GetTrainingBy(createdBy);
+            var result = await GetTrainingByUserId.Execute(createdBy);
 
             result.Should().Contain(new List<Training> { ATraining } );
         }

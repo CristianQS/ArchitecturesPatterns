@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
-using NSubstitute;
 using NUnit.Framework;
 using SwimTraining.Domain;
 
@@ -16,19 +14,17 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters.Test
 
         [Test]
         public async Task get_a_training_to_a_PostresSql_database() {
-            var AUserid = "AUserId";
+            var AUserid = "1234";
             var trainingRepositoryPostgreSql = new TrainingRepositoryPostgreSQLAdapter();
-            var AName = "ATraining";
+            var AName = "Training 1";
             var ADescription = "ADescription";
             var ADateTime = new DateTime(2020, 1, 1);
-            var exercises = new List<Exercise>();
-            var createdBy = "123";
-            var ATraining = new Training(AName, ADescription, ADateTime, exercises, createdBy);
-
+            var createdBy = "1234";
+            var ATraining = new Training(AName, ADescription, ADateTime, null, createdBy);
+            var Training2 = new Training("Training 2", "AnotherDescription", new DateTime(2020, 2, 2), null, "1234");
             var trainings = await trainingRepositoryPostgreSql.GetTrainingByUser(AUserid);
 
-            trainings.Should().Contain(ATraining);
-            Assert.Pass();
+            trainings.Should().BeEquivalentTo(new List<Training> { ATraining,Training2 });
         }
     }
 }

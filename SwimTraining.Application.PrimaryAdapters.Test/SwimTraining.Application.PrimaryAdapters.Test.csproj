@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SwimTraining.Application.PrimaryAdapters\SwimTraining.Application.PrimaryAdapters.csproj" />
     <ProjectReference Include="..\SwimTraining.Domain\SwimTraining.Domain.csproj" />
+    <ProjectReference Include="..\SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj" />
   </ItemGroup>
 
 </Project>
