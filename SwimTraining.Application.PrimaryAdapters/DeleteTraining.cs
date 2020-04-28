@@ -1,4 +1,5 @@
-﻿using SwimTraining.Application.SecondaryPorts;
+﻿using System.Threading.Tasks;
+using SwimTraining.Application.SecondaryPorts;
 
 namespace SwimTraining.Application.PrimaryAdapters {
     public class DeleteTraining {
