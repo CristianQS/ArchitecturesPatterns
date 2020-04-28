@@ -7,7 +7,7 @@ using SwimTraining.Domain;
 
 namespace SwimTraining.Infraestructure.SecondaryAdapters.Test
 {
-    public class TrainingRepositoryPostgreSQLAdapterShould {
+    public class TrainingRepositoryPostgresSqlAdapterShould {
         [SetUp]
         public void Setup() {
         }
@@ -15,7 +15,7 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters.Test
         [Test]
         public async Task get_a_training_to_a_PostresSql_database() {
             var AUserid = "1234";
-            var trainingRepositoryPostgreSql = new TrainingRepositoryPostgreSQLAdapter();
+            var trainingRepositoryPostgreSql = new TrainingRepositoryPostgresSqlAdapter();
             var AName = "Training 1";
             var ADescription = "ADescription";
             var ADateTime = new DateTime(2020, 1, 1);
