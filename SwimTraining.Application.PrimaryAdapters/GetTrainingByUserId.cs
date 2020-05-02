@@ -24,8 +24,7 @@ namespace SwimTraining.Application.PrimaryAdapters {
                 result.Add(new TrainingResponse {
                     Name = training.Name,
                     Description = training.Description,
-                    Date = training.Date,
-                    ExerciseList = training.ExerciseList,
+                    Date = training.DateTime,
                     CreatedBy = training.CreatedBy
                 });
             });

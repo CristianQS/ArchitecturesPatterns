@@ -12,7 +12,7 @@ namespace SwimTraining.Application.PrimaryAdapters {
         }
 
         public async Task<Training> Execute(TrainingDto training, int trainingId) {
-            await TrainingRepositoryPort.UpdateTraining(new Training(training.name, training.description, training.datetime, null, training.createdBy), trainingId);
+            await TrainingRepositoryPort.UpdateTraining(new Training(training.name, training.description, training.datetime, training.createdBy), trainingId);
             return null;
         }
     }

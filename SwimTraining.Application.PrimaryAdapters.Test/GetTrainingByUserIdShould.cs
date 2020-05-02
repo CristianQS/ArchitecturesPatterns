@@ -28,7 +28,7 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
             var ADateTime = new DateTime(2020,1,1);
             var exercises = new List<Exercise>();
             var createdBy = "AnId";
-            var ATraining = new Training(AName,ADescription,ADateTime,exercises,createdBy);
+            var ATraining = new Training(AName,ADescription,ADateTime,createdBy);
             TrainingRepositoryPort.GetTrainingByUser(createdBy).Returns(new List<Training>{ ATraining });
 
             var result = await GetTrainingByUserId.Execute(createdBy);
@@ -36,7 +36,7 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
             result.Should().BeEquivalentTo(new List<TrainingResponse> { new TrainingResponse {
                 Name = ATraining.Name,
                 Description = ATraining.Description,
-                Date = ATraining.Date,
+                Date = ATraining.DateTime,
                 ExerciseList = ATraining.ExerciseList,
                 CreatedBy = ATraining.CreatedBy
             } } );
