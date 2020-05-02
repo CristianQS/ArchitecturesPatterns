@@ -7,7 +7,7 @@ using SwimTraining.Application.PrimaryAdapters.Response;
 
 namespace SwimTraining_API.Controllers {
     [ApiController]
-    [Route("api/training")]
+    [Route("api/trainings")]
 
     public class TrainingController : Controller {
         private readonly TrainingFactory TrainingFactory;
@@ -16,7 +16,7 @@ namespace SwimTraining_API.Controllers {
             TrainingFactory = trainingFactory;
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("user/{userId}")]
         public Task<List<TrainingResponse>> GetTrainingsByUser(string userId) {
             var trainingList = TrainingFactory.GetTrainingByUserId().Execute(userId);
             return trainingList;
