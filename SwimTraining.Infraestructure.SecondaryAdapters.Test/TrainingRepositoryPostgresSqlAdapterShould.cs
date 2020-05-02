@@ -68,5 +68,17 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters.Test
             training.Should().BeEquivalentTo(ATraining);
         }
 
+        [Test]
+        public async Task delete_a_training_to_a_PostresSql_database() {
+            var connectionProvider = new ConnectionProvider("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
+            var trainingRepositoryPostgreSql = new TrainingRepositoryPostgresSqlAdapter(connectionProvider); 
+            await trainingRepositoryPostgreSql.DeleteTraining(1);
+
+            var training = await trainingRepositoryPostgreSql.GetTrainingById(1);
+
+            training.Should().BeEmpty();
+
+        }
+
     }
 }

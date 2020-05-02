@@ -59,14 +59,16 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
              return training;
         }
 
-        public async Task DeleteTraining(int trainingId) {
-            var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
-            await connection.OpenAsync();
+        public async Task DeleteTraining(int id) {
+            await connectionProvider.EstablishConnection();
 
-            var command = new NpgsqlCommand("Delete from training where id=@trainingId", connection);
-            command.Parameters.AddWithValue("trainingId", trainingId);
-            command.Prepare();
-            await command.ExecuteNonQueryAsync();
+            connectionProvider.Execute(
+                "Delete from training where id=@id",
+                new
+                {
+                    id = id
+                });
+            connectionProvider.Close();
         }
     }
 
