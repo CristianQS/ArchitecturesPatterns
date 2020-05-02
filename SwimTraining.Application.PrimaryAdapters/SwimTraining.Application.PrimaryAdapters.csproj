@@ -59,10 +59,6 @@
       <Project>{1A2C2D6A-A1C9-480F-AEED-FBA8B8FC4F2C}</Project>
       <Name>SwimTraining.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj">
-      <Project>{64352720-8A25-40BB-AC1C-F038928E3383}</Project>
-      <Name>SwimTraining.Infraestructure.SecondaryAdapters</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,11 +16,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Application.Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Application.SecondaryPorts", "SwimTraining.Application.SecondaryPorts\SwimTraining.Application.SecondaryPorts.csproj", "{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Infraestructure.SecondaryAdapters", "SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj", "{64352720-8A25-40BB-AC1C-F038928E3383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwimTraining.Application.PrimaryAdapters.Test", "SwimTraining.Application.PrimaryAdapters.Test\SwimTraining.Application.PrimaryAdapters.Test.csproj", "{27C08ECB-CFD0-47F0-9111-39C98178CEB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Application.PrimaryAdapters.Test", "SwimTraining.Application.PrimaryAdapters.Test\SwimTraining.Application.PrimaryAdapters.Test.csproj", "{27C08ECB-CFD0-47F0-9111-39C98178CEB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwimTraining.Infraestructure.SecondaryAdapters.Test", "SwimTraining.Infraestructure.SecondaryAdapters.Test\SwimTraining.Infraestructure.SecondaryAdapters.Test.csproj", "{567AF991-C0D3-47A5-92A1-9AC01DB560ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Infraestructure.SecondaryAdapters.Test", "SwimTraining.Infraestructure.SecondaryAdapters.Test\SwimTraining.Infraestructure.SecondaryAdapters.Test.csproj", "{567AF991-C0D3-47A5-92A1-9AC01DB560ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure.Database", "Infraestructure.Database\Infraestructure.Database.csproj", "{1A871AC2-B11C-4E71-B01A-DA8CC0498C9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimTraining.Infraestructure.SecondaryAdapters", "SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj", "{5A49F0BB-D6FF-4B8E-A788-F5538956A397}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +46,6 @@ Global
 		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C8C507E-4D9D-4A83-8CAA-BDA4C48E4383}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64352720-8A25-40BB-AC1C-F038928E3383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64352720-8A25-40BB-AC1C-F038928E3383}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64352720-8A25-40BB-AC1C-F038928E3383}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64352720-8A25-40BB-AC1C-F038928E3383}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27C08ECB-CFD0-47F0-9111-39C98178CEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{27C08ECB-CFD0-47F0-9111-39C98178CEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C08ECB-CFD0-47F0-9111-39C98178CEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -56,6 +54,14 @@ Global
 		{567AF991-C0D3-47A5-92A1-9AC01DB560ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{567AF991-C0D3-47A5-92A1-9AC01DB560ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{567AF991-C0D3-47A5-92A1-9AC01DB560ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A871AC2-B11C-4E71-B01A-DA8CC0498C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A871AC2-B11C-4E71-B01A-DA8CC0498C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A871AC2-B11C-4E71-B01A-DA8CC0498C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A871AC2-B11C-4E71-B01A-DA8CC0498C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A49F0BB-D6FF-4B8E-A788-F5538956A397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A49F0BB-D6FF-4B8E-A788-F5538956A397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A49F0BB-D6FF-4B8E-A788-F5538956A397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A49F0BB-D6FF-4B8E-A788-F5538956A397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

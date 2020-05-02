@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -21,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SwimTraining.Domain\SwimTraining.Domain.csproj" />
     <ProjectReference Include="..\SwimTraining.Infraestructure.SecondaryAdapters\SwimTraining.Infraestructure.SecondaryAdapters.csproj" />
   </ItemGroup>
+
 
 </Project>

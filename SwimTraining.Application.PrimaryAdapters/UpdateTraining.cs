@@ -2,7 +2,6 @@
 using SwimTraining.Application.PrimaryAdapters.Request;
 using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
-using SwimTraining.Infraestructure.SecondaryAdapters;
 
 namespace SwimTraining.Application.PrimaryAdapters {
     public class UpdateTraining {
