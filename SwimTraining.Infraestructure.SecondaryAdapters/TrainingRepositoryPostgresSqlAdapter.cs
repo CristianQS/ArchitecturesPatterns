@@ -18,22 +18,22 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
         public async Task<List<Training>> GetTrainingByUser(string createdBy) {
             await connectionProvider.EstablishConnection();
             var trainings = connectionProvider.Query<Training>("SELECT name,description,datetime,createdBy FROM training where createdBy=@createdBy", new {@createdBy = createdBy });
-            //connectionProvider.Close();
+            connectionProvider.Close();
             return trainings.ToList();
         }
 
         public async Task CreateTraining(Training training)
         {
-            var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
-            await connection.OpenAsync();
+            await connectionProvider.EstablishConnection();
 
-            var command = new NpgsqlCommand("INSERT INTO training(name, description, datetime, createdBy) VALUES(@name, @description, @datetime, @createdBy)", connection);
-            command.Parameters.AddWithValue("name", training.Name);
-            command.Parameters.AddWithValue("description", training.Description);
-            command.Parameters.AddWithValue("datetime", training.DateTime);
-            command.Parameters.AddWithValue("createdBy", training.CreatedBy);
-            command.Prepare();
-            await command.ExecuteNonQueryAsync();
+            connectionProvider.Execute(
+                "INSERT INTO training(name, description, datetime, createdBy) VALUES(@name, @description, @datetime, @createdBy)", 
+                new {
+                    name = training.Name,
+                    description = training.Description,
+                    datetime = training.DateTime,
+                    createdBy = training.CreatedBy
+                });
         }
 
         public async Task<Training> UpdateTraining(Training training, int trainingId)
