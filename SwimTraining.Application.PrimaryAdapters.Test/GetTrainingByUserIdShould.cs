@@ -6,6 +6,7 @@ using NUnit.Framework;
 using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
 using FluentAssertions;
+using SwimTraining.Application.PrimaryAdapters.Response;
 
 namespace SwimTraining.Application.PrimaryAdapters.Test
 {
@@ -28,11 +29,17 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
             var exercises = new List<Exercise>();
             var createdBy = "AnId";
             var ATraining = new Training(AName,ADescription,ADateTime,exercises,createdBy);
-            GetTrainingByUserId.Execute(createdBy).Returns(new List<Training>{ ATraining });
+            TrainingRepositoryPort.GetTrainingByUser(createdBy).Returns(new List<Training>{ ATraining });
 
             var result = await GetTrainingByUserId.Execute(createdBy);
 
-            result.Should().Contain(new List<Training> { ATraining } );
+            result.Should().BeEquivalentTo(new List<TrainingResponse> { new TrainingResponse {
+                Name = ATraining.Name,
+                Description = ATraining.Description,
+                Date = ATraining.Date,
+                ExerciseList = ATraining.ExerciseList,
+                CreatedBy = ATraining.CreatedBy
+            } } );
         }
     }
 }

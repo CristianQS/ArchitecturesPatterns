@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwimTraining.Application.PrimaryAdapters.Factories;
 using SwimTraining.Application.PrimaryAdapters.Request;
-using SwimTraining.Domain;
+using SwimTraining.Application.PrimaryAdapters.Response;
 
 namespace SwimTraining_API.Controllers {
     [Route("api/training")]
@@ -17,7 +17,7 @@ namespace SwimTraining_API.Controllers {
 
         // GET
         [HttpGet]
-        public Task<List<Training>> GetTrainingsByUser(string userId) {
+        public Task<List<TrainingResponse>> GetTrainingsByUser(string userId) {
             var trainingList = TrainingFactory.GetTrainingByUserId().Execute(userId);
             return trainingList;
         }
