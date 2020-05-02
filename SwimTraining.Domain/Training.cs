@@ -2,7 +2,7 @@
 
 namespace SwimTraining.Domain {
     public class Training {
-        public int id { get; }
+        public int Id { get; }
         public string Name { get; }
         public string Description { get; }
         public DateTime DateTime { get; }
@@ -16,7 +16,7 @@ namespace SwimTraining.Domain {
         }
 
         public Training(int id, string name, string description, DateTime dateTime, string createdBy) {
-            this.id = id;
+            Id = id;
             Name = name;
             Description = description;
             DateTime = dateTime;

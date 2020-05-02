@@ -22,6 +22,7 @@ namespace SwimTraining.Application.PrimaryAdapters {
             var result = new List<TrainingResponse>();
             trainings.ForEach(training => {
                 result.Add(new TrainingResponse {
+                    Id = training.Id,
                     Name = training.Name,
                     Description = training.Description,
                     Date = training.DateTime,

@@ -17,7 +17,7 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
 
         public async Task<List<Training>> GetTrainingByUser(string createdBy) {
             await connectionProvider.EstablishConnection();
-            var trainings = connectionProvider.Query<Training>("SELECT name,description,datetime,createdBy FROM training where createdBy=@createdBy", new {@createdBy = createdBy });
+            var trainings = connectionProvider.Query<Training>("SELECT id,name,description,datetime,createdBy FROM training where createdBy=@createdBy", new {@createdBy = createdBy });
             connectionProvider.Close();
             return trainings.ToList();
         }        
