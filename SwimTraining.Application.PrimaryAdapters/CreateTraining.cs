@@ -13,7 +13,13 @@ namespace SwimTraining.Application.PrimaryAdapters {
         }
 
         public async Task Execute(TrainingDto training) {
-            await TrainingRepositoryPort.CreateTraining(new Training(training.name,training.description, training.datetime, null,training.createdBy));
+            await TrainingRepositoryPort.CreateTraining(
+                new Training(
+                    training.name,
+                    training.description, 
+                    training.datetime,
+                    training.createdBy)
+                );
         }
     }
 }
