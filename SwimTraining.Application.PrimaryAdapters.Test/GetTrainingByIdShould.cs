@@ -7,6 +7,7 @@ using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
 using FluentAssertions;
 using SwimTraining.Application.PrimaryAdapters.Response;
+using SwimTraining.Application.PrimaryAdapters.Test.Builder;
 
 namespace SwimTraining.Application.PrimaryAdapters.Test
 {
@@ -22,12 +23,12 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
 
         [Test]
         public async Task get_training_by_id() {
-            var AName = "ATraining";
-            var ADescription = "ADescription";
-            var ADateTime = new DateTime(2020, 1, 1);
-            var createdBy = "AnId";
-            var ATraining = new Training(AName, ADescription, ADateTime, createdBy);
-            TrainingRepositoryPort.GetTrainingByUser(createdBy).Returns(new List<Training> { ATraining });
+            var ATraining = new TrainingBuilder()
+                .withId(1)
+                .withName("ATraining")
+                .withDescription("ADescription")
+                .withDateTime(new DateTime(2020, 1, 1)).withCreatedBy("AnId").Build();
+            TrainingRepositoryPort.GetTrainingByUser(ATraining.CreatedBy).Returns(new List<Training> { ATraining });
 
             var result = await GetTrainingById.Execute(1);
 
