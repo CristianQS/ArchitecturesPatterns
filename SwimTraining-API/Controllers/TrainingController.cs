@@ -30,13 +30,13 @@ namespace SwimTraining_API.Controllers {
         [HttpPost]
         public async Task<ActionResult> CreateTraining([FromBody] TrainingDto training) {
             await TrainingFactory.CreateTraining().Execute(training);
-            return NoContent();
+            return Ok();
         }
 
         [HttpPut("{trainingId}")]
         public async Task<ActionResult> UpdateTraining([FromBody] TrainingDto training, int trainingId) {
-            await TrainingFactory.UpdateTraining().Execute(training, trainingId);
-            return Content("");
+            var trainingResponse = await TrainingFactory.UpdateTraining().Execute(training, trainingId);
+            return new OkObjectResult(trainingResponse);
         }
 
         [HttpDelete("{trainingId}")]

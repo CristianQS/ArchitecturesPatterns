@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using SwimTraining.Application.PrimaryAdapters.Request;
+using SwimTraining.Application.PrimaryAdapters.Response;
 using SwimTraining.Application.SecondaryPorts;
 using SwimTraining.Domain;
 
@@ -11,8 +13,17 @@ namespace SwimTraining.Application.PrimaryAdapters {
             TrainingRepositoryPort = trainingRepositoryPort;
         }
 
-        public async Task<Training> Execute(TrainingDto training, int trainingId) {
-            return await TrainingRepositoryPort.UpdateTraining(new Training(training.name, training.description, training.datetime, training.createdBy), trainingId);
+        public async Task<TrainingResponse> Execute(TrainingDto training, int trainingId) {
+            var trainingUpdated = await TrainingRepositoryPort.UpdateTraining(new Training(training.name, training.description, training.datetime, training.createdBy), trainingId);
+            return new TrainingResponse {
+                Id = trainingUpdated.Id,
+                Name = trainingUpdated.Name,
+                Description = trainingUpdated.Description,
+                Date = trainingUpdated.DateTime,
+                CreatedBy = trainingUpdated.CreatedBy
+            };
         }
+
+
     }
 }
