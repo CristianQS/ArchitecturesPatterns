@@ -1,3 +1,4 @@
+using Infraestructure.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,20 +10,18 @@ using SwimTraining.Infraestructure.SecondaryAdapters;
 
 namespace SwimTraining_API
 {
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
+    public class Startup {
+        public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
+        public void ConfigureServices(IServiceCollection services) {
             services.AddControllers();
-            services.AddSingleton(new TrainingFactory(new TrainingRepositoryPostgresSqlAdapter()));
+            var connectionProvider = new ConnectionProvider("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
+            services.AddSingleton(new TrainingFactory(new TrainingRepositoryPostgresSqlAdapter(connectionProvider)));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });

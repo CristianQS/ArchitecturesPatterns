@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
+using Infraestructure.Database;
 using NUnit.Framework;
 using SwimTraining.Domain;
 
@@ -14,17 +15,16 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters.Test
 
         [Test]
         public async Task get_a_training_to_a_PostresSql_database() {
-            var AUserid = "1234";
-            var trainingRepositoryPostgreSql = new TrainingRepositoryPostgresSqlAdapter();
-            var AName = "Training 1";
+            var connectionProvider = new ConnectionProvider("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
+            var trainingRepositoryPostgreSql = new TrainingRepositoryPostgresSqlAdapter(connectionProvider);
+            var AName = "training 1";
             var ADescription = "ADescription";
-            var ADateTime = new DateTime(2020, 1, 1);
-            var createdBy = "1234";
-            var ATraining = new Training(AName, ADescription, ADateTime, null, createdBy);
-            var Training2 = new Training("Training 2", "AnotherDescription", new DateTime(2020, 2, 2), null, "1234");
-            var trainings = await trainingRepositoryPostgreSql.GetTrainingByUser(AUserid);
+            var ADateTime = new DateTime(2017, 4, 30);
+            var createdBy = "123";
+            var ATraining = new Training(AName, ADescription, ADateTime, createdBy);
+            var trainings = await trainingRepositoryPostgreSql.GetTrainingByUser(createdBy);
 
-            trainings.Should().BeEquivalentTo(new List<Training> { ATraining,Training2 });
+            trainings.Should().BeEquivalentTo(new List<Training> { ATraining });
         }
     }
 }
