@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NSubstitute;
@@ -10,36 +10,33 @@ using SwimTraining.Application.PrimaryAdapters.Response;
 
 namespace SwimTraining.Application.PrimaryAdapters.Test
 {
-    public class GetTrainingByUserIdShould
-    {
-        private GetTrainingByUserId GetTrainingByUserId;
+    public class GetTrainingByIdShould {
+        private GetTrainingById GetTrainingById;
         private TrainingRepositoryPort TrainingRepositoryPort;
 
         [SetUp]
         public void Setup() {
             TrainingRepositoryPort = Substitute.For<TrainingRepositoryPort>();
-            GetTrainingByUserId = new GetTrainingByUserId(TrainingRepositoryPort);
+            GetTrainingById = new GetTrainingById(TrainingRepositoryPort);
         }
 
         [Test]
         public async Task get_training_by_id() {
             var AName = "ATraining";
             var ADescription = "ADescription";
-            var ADateTime = new DateTime(2020,1,1);
-            var createdBy = "AUserId";
-            var idTraining = 1;
-            var ATraining = new Training(idTraining,AName, ADescription,ADateTime,createdBy);
-            TrainingRepositoryPort.GetTrainingByUser(createdBy).Returns(new List<Training>{ ATraining });
+            var ADateTime = new DateTime(2020, 1, 1);
+            var createdBy = "AnId";
+            var ATraining = new Training(AName, ADescription, ADateTime, createdBy);
+            TrainingRepositoryPort.GetTrainingByUser(createdBy).Returns(new List<Training> { ATraining });
 
-            var result = await GetTrainingByUserId.Execute(createdBy);
+            var result = await GetTrainingById.Execute(1);
 
             result.Should().BeEquivalentTo(new List<TrainingResponse> { new TrainingResponse {
-                Id = ATraining.Id,
                 Name = ATraining.Name,
                 Description = ATraining.Description,
                 Date = ATraining.DateTime,
                 CreatedBy = ATraining.CreatedBy
-            } } );
+            } });
         }
     }
 }

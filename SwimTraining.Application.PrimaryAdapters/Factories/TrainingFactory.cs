@@ -20,5 +20,9 @@ namespace SwimTraining.Application.PrimaryAdapters.Factories {
         public DeleteTraining DeleteTraining() {
             return new DeleteTraining(TrainingRepository);
         }
+
+        public GetTrainingById GetTrainingById() {
+            return new GetTrainingById(TrainingRepository);
+        }
     }
 }

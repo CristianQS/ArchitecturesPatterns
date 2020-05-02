@@ -15,10 +15,15 @@ namespace SwimTraining_API.Controllers {
             TrainingFactory = trainingFactory;
         }
 
-        // GET
         [HttpGet]
         public Task<List<TrainingResponse>> GetTrainingsByUser(string userId) {
             var trainingList = TrainingFactory.GetTrainingByUserId().Execute(userId);
+            return trainingList;
+        } 
+        
+        [HttpGet]
+        public Task<List<TrainingResponse>> GetTrainingsById(int id) {
+            var trainingList = TrainingFactory.GetTrainingById().Execute(id);
             return trainingList;
         }
 
