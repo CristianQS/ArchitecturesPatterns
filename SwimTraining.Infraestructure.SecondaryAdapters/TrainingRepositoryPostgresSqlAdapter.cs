@@ -20,10 +20,15 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
             var trainings = connectionProvider.Query<Training>("SELECT name,description,datetime,createdBy FROM training where createdBy=@createdBy", new {@createdBy = createdBy });
             connectionProvider.Close();
             return trainings.ToList();
+        }        
+        public async Task<List<Training>> GetTrainingById(int id) {
+            await connectionProvider.EstablishConnection();
+            var trainings = connectionProvider.Query<Training>("SELECT id,name,description,datetime,createdBy FROM training where id=@id", new {id = id });
+            connectionProvider.Close();
+            return trainings.ToList();
         }
 
-        public async Task CreateTraining(Training training)
-        {
+        public async Task CreateTraining(Training training) {
             await connectionProvider.EstablishConnection();
 
             connectionProvider.Execute(
@@ -34,26 +39,27 @@ namespace SwimTraining.Infraestructure.SecondaryAdapters {
                     datetime = training.DateTime,
                     createdBy = training.CreatedBy
                 });
+            connectionProvider.Close();
         }
 
-        public async Task<Training> UpdateTraining(Training training, int trainingId)
-        {
-            var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
-            await connection.OpenAsync();
+        public async Task<Training> UpdateTraining(Training training, int id) {
+            await connectionProvider.EstablishConnection();
 
-            var command = new NpgsqlCommand("Update training Set name=@name, description=@description, datetime=@datetime, createdBy=@createdBy where id=@trainingId", connection);
-            command.Parameters.AddWithValue("name", training.Name);
-            command.Parameters.AddWithValue("description", training.Description);
-            command.Parameters.AddWithValue("datetime", training.DateTime);
-            command.Parameters.AddWithValue("createdBy", training.CreatedBy);
-            command.Parameters.AddWithValue("trainingId", trainingId);
-            command.Prepare();
-            await command.ExecuteNonQueryAsync();
-            return null;
+            connectionProvider.Execute(
+                "Update training Set name=@name, description=@description, datetime=@datetime, createdBy=@createdBy where id=@id",
+                new
+                {
+                    name = training.Name,
+                    description = training.Description,
+                    datetime = training.DateTime,
+                    createdBy = training.CreatedBy,
+                    id = id
+                });
+             connectionProvider.Close();
+             return training;
         }
 
-        public async Task DeleteTraining(int trainingId)
-        {
+        public async Task DeleteTraining(int trainingId) {
             var connection = new NpgsqlConnection("Host=localhost;Port=5432;Username=admin;Password=admin;Database=python_db");
             await connection.OpenAsync();
 

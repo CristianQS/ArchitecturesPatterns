@@ -37,7 +37,6 @@ namespace SwimTraining.Application.PrimaryAdapters.Test
                 Name = ATraining.Name,
                 Description = ATraining.Description,
                 Date = ATraining.DateTime,
-                ExerciseList = ATraining.ExerciseList,
                 CreatedBy = ATraining.CreatedBy
             } } );
         }
