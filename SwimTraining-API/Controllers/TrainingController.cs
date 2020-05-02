@@ -6,6 +6,7 @@ using SwimTraining.Application.PrimaryAdapters.Request;
 using SwimTraining.Application.PrimaryAdapters.Response;
 
 namespace SwimTraining_API.Controllers {
+    [ApiController]
     [Route("api/training")]
 
     public class TrainingController : Controller {
@@ -15,13 +16,13 @@ namespace SwimTraining_API.Controllers {
             TrainingFactory = trainingFactory;
         }
 
-        [HttpGet]
+        [HttpGet("{userId}")]
         public Task<List<TrainingResponse>> GetTrainingsByUser(string userId) {
             var trainingList = TrainingFactory.GetTrainingByUserId().Execute(userId);
             return trainingList;
         } 
         
-        [HttpGet]
+        [HttpGet("{id}")]
         public Task<List<TrainingResponse>> GetTrainingsById(int id) {
             var trainingList = TrainingFactory.GetTrainingById().Execute(id);
             return trainingList;
