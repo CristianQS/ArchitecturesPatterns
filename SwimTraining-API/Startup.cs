@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using SwimTraining.Application.PrimaryAdapters.Factories;
+using SwimTraining.Infraestructure.SecondaryAdapters;
 
 namespace SwimTraining_API
 {
@@ -21,7 +22,7 @@ namespace SwimTraining_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<TrainingFactory>();
+            services.AddSingleton(new TrainingFactory(new TrainingRepositoryPostgresSqlAdapter()));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
