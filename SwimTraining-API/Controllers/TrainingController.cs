@@ -16,7 +16,7 @@ namespace SwimTraining_API.Controllers {
             TrainingFactory = trainingFactory;
         }
 
-        [HttpGet("user/{userId}")]
+        [HttpGet("users/{userId}")]
         public Task<List<TrainingResponse>> GetTrainingsByUser(string userId) {
             var trainingList = TrainingFactory.GetTrainingByUserId().Execute(userId);
             return trainingList;
