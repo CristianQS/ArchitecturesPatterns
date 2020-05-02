@@ -25,5 +25,9 @@ namespace Infraestructure.Database {
             return Connection.Query<T>(sql,param).ToList();
         }
 
+        public int Execute(string sql, object param = null) {
+            return Connection.Execute(sql, param);
+        }
+
     }
 }
